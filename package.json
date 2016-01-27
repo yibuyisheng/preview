@@ -1,0 +1,31 @@
+{
+  "name": "preview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yibuyisheng/preview.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yibuyisheng/preview/issues"
+  },
+  "homepage": "https://github.com/yibuyisheng/preview#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-webserver": "^0.9.1",
+    "node-sass": "^3.4.2",
+    "postcss": "^5.0.14"
+  }
+}
