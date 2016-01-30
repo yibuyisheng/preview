@@ -1,57 +1,69 @@
-html,
-body {
+$grid-gutter-width: 0;
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/mixins';
+@import '../../node_modules/bootstrap/scss/bootstrap-grid';
+
+.list-page {
     margin: 0;
     padding: 0;
     -webkit-overflow-scrolling: touch;
-}
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-li {
-    display: flex;
-    margin-bottom: 4px;
-}
-img {
-    flex: 1;
-}
-li > div {
-    flex: 1;
-}
-.buy {
-    font-size: 14px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-}
-.button {
-    color: #c00;
-    font-size: 12px;
-    padding: 5px 6px;
-    border: 1px solid;
-    border-radius: 3px;
-}
-.money {
-    color: #c00;
-    padding-top: 10px;
-}
-p {
-    margin: 0;
-}
-h3 {
-    font-size: 14px;
-    margin: 8px 0;
-}
-.info {
-    font-size: 12px;
-    line-height: 18px;
-}
-.right {
-    margin: 0 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+
+    .container-fluid {
+        padding: .3rem;
+    }
+    .buy {
+        @include make-row();
+        font-size: 14px;
+        font-weight: bold;
+        margin-top: 2px;
+
+        .money-box,
+        .button-box {
+            @include make-col();
+            @include make-col-span(6);
+        }
+        .button-box {
+            text-align: right;
+        }
+    }
+    .button {
+        color: #c00;
+        font-size: 12px;
+        padding: 5px 6px;
+        border: 1px solid;
+        border-radius: 3px;
+        display: inline-block;
+    }
+    .money {
+        color: #c00;
+        display: inline-block;
+        position: relative;
+        top: 6px;
+    }
+    p {
+        margin: 0;
+    }
+    h3 {
+        font-size: 14px;
+        margin: 8px 0;
+    }
+    .info {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .right,
+    .img-box {
+        @include make-col();
+        @include make-col-span(6);
+        padding-bottom: 10px;
+    }
+    .right {
+        border-bottom: 1px solid #ddd;
+        padding-left: 5px;
+        box-sizing: border-box;
+    }
+    .img-box {
+        background: #eee;
+        min-height: 80px;
+    }
 }

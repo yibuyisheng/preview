@@ -5,6 +5,7 @@ var autoprefixer = require('autoprefixer');
 var postcss = require('postcss');
 var gulpSass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
+var fs = require('fs');
 
 gulp.task('webserver', function () {
     gulp.src('app')
@@ -16,14 +17,14 @@ gulp.task('webserver', function () {
                 var path = getPathFromRequest(req);
                 if (/\.scss$/.test(path)) {
                     compileSass(path)
-                        .then(function (result) {
-                            var cleaner  = postcss([autoprefixer({add: false, browsers: []})]);
-                            return cleaner.process(result.css);
-                        })
-                        .then(function (cleaned) {
-                            var prefixer = postcss([autoprefixer]);
-                            return prefixer.process(cleaned.css);
-                        })
+                        // .then(function (result) {
+                        //     var cleaner  = postcss([autoprefixer({cascade: false, browsers: ['last 2 versions']})]);
+                        //     return cleaner.process(result.css);
+                        // })
+                        // .then(function (cleaned) {
+                        //     var prefixer = postcss([autoprefixer]);
+                        //     return prefixer.process(cleaned.css);
+                        // })
                         .then(function (result) {
                             res.end(result.css);
                         })
@@ -51,6 +52,14 @@ gulp.task('sass', function () {
         .pipe(gulp.dest('./dist/css'));
 });
 
+gulp.task('html', function () {
+    var content = fs.readFileSync('./src/list.html').toString();
+    fs.writeFileSync('./dist/list.html', content.replace(
+        'href="./sass/list.scss"', 'href="./css/list.css"'
+    ));
+});
+
+gulp.task('dist', ['sass', 'html']);
 gulp.task('dev', ['webserver']);
 
 function getPathFromRequest(req) {
